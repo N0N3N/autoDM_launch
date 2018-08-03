@@ -16,8 +16,9 @@ public class Launcher {
     int i = 0;
 
 
-    public static final By TABLE_NAMES =  By.xpath("//td[@class='ng-binding']");
-    //public static final By TABLE_NAMES =  By.xpath("//td[contains(text(), 'Tex_')]");
+    //public static final By TABLE_NAMES =  By.xpath("//td[@class='ng-binding']");
+    public static final By TABLE_NAMES =  By.cssSelector("td[class='ng-binding'][value='Tex_CHP']");
+    //  By.cssSelector("td[class='ng-binding'][value='Tex_CHP']");
 
     public void openHomePageDesk(){
         LOGGER.info("Open HomePage for Desktop");
@@ -28,7 +29,7 @@ public class Launcher {
     public List<WebElement> getTableNames() {
         System.out.println("Getting List of Table name");
         tableNames = core.getListOfElements(TABLE_NAMES);
-        System.out.println(tableNames.get(0).getText());
+        //System.out.println(tableNames.get(0).getText());
         for (WebElement ele : tableNames){
             i = i+1;
 
