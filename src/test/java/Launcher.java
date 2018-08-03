@@ -16,8 +16,8 @@ public class Launcher {
     int i = 0;
 
 
-    //public static final By TABLE_NAMES =  By.xpath("//td[@class='ng-binding']");
-    public static final By TABLE_NAMES =  By.cssSelector("td[class='ng-binding'][value='Tex_CHP']");
+    public static final By TABLE_NAMES =  By.xpath("//td[4][@class='ng-binding']");
+    //public static final By TABLE_NAMES =  By.cssSelector("td[class='ng-binding'][value='Tex_CHP']");
     //  By.cssSelector("td[class='ng-binding'][value='Tex_CHP']");
 
     public void openHomePageDesk(){
@@ -26,7 +26,7 @@ public class Launcher {
         core.waitPageLoaded();
     }
 
-    public List<WebElement> getTableNames() {
+    public List<WebElement> getTableNames0() {
         System.out.println("Getting List of Table name");
         tableNames = core.getListOfElements(TABLE_NAMES);
         //System.out.println(tableNames.get(0).getText());
@@ -42,7 +42,7 @@ public class Launcher {
     @Test
     public void autoDMlaunch(){
         openHomePageDesk();
-        getTableNames();
+        getTableNames0();
 
         //core.printTablename(TABLE_NAMES);
         core.closeDriver();

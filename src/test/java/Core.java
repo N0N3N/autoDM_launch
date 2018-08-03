@@ -1,23 +1,22 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.Thread.sleep;
 
 public class Core {
     private WebDriver driver;
     private static final String CHROME_DRIVER_LOCATION = "C://driver/chromedriver.exe";
     private static final Logger LOGGER = LogManager.getLogger(Core.class);
 
+    int i = 0;
+    //private List<WebElement> outputList;
+    //List<WebElement> outputList;
 
     public Core() {
         System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_LOCATION);
@@ -37,6 +36,17 @@ public class Core {
         List<WebElement> elements = driver.findElements(path);
         return elements;
     }
+
+    /*public List<WebElement> selectFromListOfElements (List<WebElement> inputList, String criteria){
+        //int i = 0;
+
+        for (WebElement ele : inputList){
+            if (ele.getText().contains(criteria)){
+                List<WebElement> outputList[i] = ele;
+                i = i + 1;
+            }
+        }
+    }*/
 
     public void printTablename(By path){
         //WebDriverWait wait = new WebDriverWait(driver, 5);
