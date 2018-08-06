@@ -13,12 +13,15 @@ public class Launcher {
 
     private static final Logger LOGGER = LogManager.getLogger(Launcher.class);
     private List<WebElement> tableNames;
+    private List<WebElement> tables;
     int i = 0;
 
 
     public static final By TABLE_NAMES =  By.xpath("//td[4][@class='ng-binding']");
     //public static final By TABLE_NAMES =  By.cssSelector("td[class='ng-binding'][value='Tex_CHP']");
     //  By.cssSelector("td[class='ng-binding'][value='Tex_CHP']");
+
+    public static final By TABLES_LIST = By.xpath("//tr/td[4][contains(text()[2],'Tex_')]/../td[8][contains(b, 'Finished')]/../td[10]");
 
     public void openHomePageDesk(){
         LOGGER.info("Open HomePage for Desktop");
@@ -39,10 +42,22 @@ public class Launcher {
         return tableNames;
     }
 
+    public void startTables(){
+        System.out.println("Starting tables");
+        tables = core.getListOfElements(TABLES_LIST);
+        for (WebElement table:tables){
+            i = i+1;
+            System.out.println("Clicking table Nr."+i);
+            table.click();
+        }
+    }
+
     @Test
     public void autoDMlaunch(){
         openHomePageDesk();
-        getTableNames0();
+        //getTableNames0();
+
+        startTables();
 
         //core.printTablename(TABLE_NAMES);
         core.closeDriver();
