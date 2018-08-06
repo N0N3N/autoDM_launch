@@ -1,5 +1,6 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -17,7 +18,7 @@ public class Launcher {
     int i = 0;
 
 
-    public static final By TABLE_NAMES = By.xpath("//tr/td[4][contains(text()[2],'Tex_')]/../td[8][contains(b, 'Finished')]/../td[10]/../td[4]");
+    public static final By TABLE_NAMES = By.xpath("//tr/td[4][contains(text()[2],'Tex_')]/../td[8][contains(b, 'Finished') or contains(b, 'Failed')]/../td[10]/../td[4]");
     public static final By TABLES_LIST = By.xpath("//tr/td[4][contains(text()[2],'Tex_')]/../td[8][contains(b, 'Finished') or contains(b, 'Failed')]/../td[10]");
 
     public void openHomePageDesk() {
@@ -32,8 +33,9 @@ public class Launcher {
 
         tableNames = core.getListOfElements(TABLE_NAMES);
         tables = core.getListOfElements(TABLES_LIST);
+        //Assert.assertTrue("No tables with Finished or Failed status", tables.isEmpty());
 
-        for (i = 0; i < tables.size(); i++) {
+        for (i = 0; i <= tables.size(); i++) {
             System.out.println("Clicking table Nr." + i + "  " + tableNames.get(i).getText());
             tables.get(i).click();
         }
