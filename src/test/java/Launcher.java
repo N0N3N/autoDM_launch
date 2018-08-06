@@ -17,49 +17,32 @@ public class Launcher {
     int i = 0;
 
 
-    public static final By TABLE_NAMES =  By.xpath("//td[4][@class='ng-binding']");
-    //public static final By TABLE_NAMES =  By.cssSelector("td[class='ng-binding'][value='Tex_CHP']");
-    //  By.cssSelector("td[class='ng-binding'][value='Tex_CHP']");
+    public static final By TABLE_NAMES = By.xpath("//tr/td[4][contains(text()[2],'Tex_')]/../td[8][contains(b, 'Finished')]/../td[10]/../td[4]");
+    public static final By TABLES_LIST = By.xpath("//tr/td[4][contains(text()[2],'Tex_')]/../td[8][contains(b, 'Finished') or contains(b, 'Failed')]/../td[10]");
 
-    public static final By TABLES_LIST = By.xpath("//tr/td[4][contains(text()[2],'Tex_')]/../td[8][contains(b, 'Finished')]/../td[10]");
-
-    public void openHomePageDesk(){
+    public void openHomePageDesk() {
         LOGGER.info("Open HomePage for Desktop");
         core.openWebPage(WEB_PAGE);
         core.waitPageLoaded();
     }
 
-    public List<WebElement> getTableNames0() {
-        System.out.println("Getting List of Table name");
-        tableNames = core.getListOfElements(TABLE_NAMES);
-        //System.out.println(tableNames.get(0).getText());
-        for (WebElement ele : tableNames){
-            i = i+1;
 
-            //System.out.println("Getting name ");
-            System.out.println("Nr."+ i + "  " + ele.getText());
-        }
-        return tableNames;
-    }
-
-    public void startTables(){
+    public void startTablesWithNames() {
         System.out.println("Starting tables");
+
+        tableNames = core.getListOfElements(TABLE_NAMES);
         tables = core.getListOfElements(TABLES_LIST);
-        for (WebElement table:tables){
-            i = i+1;
-            System.out.println("Clicking table Nr."+i);
-            table.click();
+
+        for (i = 0; i < tables.size(); i++) {
+            System.out.println("Clicking table Nr." + i + "  " + tableNames.get(i).getText());
+            tables.get(i).click();
         }
     }
 
     @Test
-    public void autoDMlaunch(){
+    public void autoDMlaunch() {
         openHomePageDesk();
-        //getTableNames0();
-
-        startTables();
-
-        //core.printTablename(TABLE_NAMES);
+        startTablesWithNames();
         core.closeDriver();
     }
 
