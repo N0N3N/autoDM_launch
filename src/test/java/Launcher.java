@@ -17,9 +17,11 @@ public class Launcher {
     private List<WebElement> tables;
     int i = 0;
 
+    public static final String NAME = "Tex_"; //Change to necessary table name component
 
-    public static final By TABLE_NAMES = By.xpath("//tr/td[4][contains(text()[2],'Tex_')]/../td[8][contains(b, 'Finished') or contains(b, 'Failed')]/../td[10]/../td[4]");
-    public static final By TABLES_LIST = By.xpath("//tr/td[4][contains(text()[2],'Tex_')]/../td[8][contains(b, 'Finished') or contains(b, 'Failed')]/../td[10]");
+    public static final By TABLE_NAMES = By.xpath("//tr/td[4][contains(text()[2],'"+NAME+"')]/../td[8][contains(b, 'Finished') or contains(b, 'Failed')]/../td[10]/../td[4]");
+    public static final By TABLES_LIST = By.xpath("//tr/td[4][contains(text()[2],'"+NAME+"')]/../td[8][contains(b, 'Finished') or contains(b, 'Failed')]/../td[10]");
+
 
     public void openHomePageDesk() {
         LOGGER.info("Open HomePage for Desktop");
