@@ -33,9 +33,9 @@ public class Launcher {
 
         tableNames = core.getListOfElements(TABLE_NAMES);
         tables = core.getListOfElements(TABLES_LIST);
-        //Assert.assertTrue("No tables with Finished or Failed status", tables.isEmpty());
+        Assert.assertFalse("No tables with Finished or Failed status", tables.isEmpty());
 
-        for (i = 0; i <= tables.size(); i++) {
+        for (i = 0; i < tables.size(); i++) {
             System.out.println("Clicking table Nr." + i + "  " + tableNames.get(i).getText());
             tables.get(i).click();
         }
