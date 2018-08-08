@@ -44,5 +44,6 @@ public class Core {
     public void waitPageLoaded() {
         LOGGER.info("Waiting for page to load");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        LOGGER.info("Page loaded");
     }
 }
