@@ -30,6 +30,8 @@ public class Core {
     }
 
     public void closeDriver() {
+        System.out.println("  ");
+        LOGGER.info("Closing page");
         driver.close();
     }
 
@@ -40,6 +42,7 @@ public class Core {
 
 
     public void waitPageLoaded() {
+        LOGGER.info("Waiting for page to load");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 }
