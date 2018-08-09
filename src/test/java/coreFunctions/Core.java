@@ -1,3 +1,6 @@
+package coreFunctions;
+
+import cucumber.api.java.en.Then;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -25,13 +28,15 @@ public class Core {
         if (!url.contains("http://") && !url.contains("https://")) {
             url = "http://" + url;
         }
-        LOGGER.info("Opening web page: " + url);
+        //LOGGER.info("Opening web page: " + url);
         driver.get(url);
     }
 
     public void closeDriver() {
         System.out.println("  ");
-        LOGGER.info("Closing page");
+        System.out.println("Closing page");
+        System.out.println("  ");
+        //LOGGER.info("Closing page");
         driver.close();
     }
 
@@ -42,8 +47,9 @@ public class Core {
 
 
     public void waitPageLoaded() {
-        LOGGER.info("Waiting for page to load");
+        //LOGGER.info("Waiting for page to load");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        LOGGER.info("Page loaded");
+        //LOGGER.info("Page loaded");
+        //System.out.println("  ");
     }
 }
